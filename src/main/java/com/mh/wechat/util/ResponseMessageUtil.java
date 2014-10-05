@@ -63,7 +63,7 @@ public class ResponseMessageUtil {
 			XMLUtil.populateCDATAElement(item, NODE_TITLE, article.getTitle());
 			XMLUtil.populateCDATAElement(item, NODE_DESCRIPTION, article.getDescription());
 			XMLUtil.populateCDATAElement(item, NODE_PIC_URL, article.getPicUrl());
-			XMLUtil.populateCDATAElement(item, NODE_URL, article.getTitle());
+			XMLUtil.populateCDATAElement(item, NODE_URL, article.getUrl());
 			articles.add(item);
 		}
 	}

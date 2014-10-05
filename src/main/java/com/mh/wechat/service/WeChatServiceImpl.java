@@ -30,6 +30,8 @@ public class WeChatServiceImpl {
 			String content = requestMessage.getContent();
 			if("1".equals(content)) {
 				processResult = this.genRespSingleNewsMessage(requestMessage);
+			} else if("2".equals(content)) {
+				processResult = this.genRespMultiNewsMessage(requestMessage);
 			} else {
 				processResult = genRespTextMessage(requestMessage);
 			}
@@ -48,12 +50,46 @@ public class WeChatServiceImpl {
 		return ResponseMessageUtil.genTextMessage(responseMessage);
 	}
 	
+	private String genRespMultiNewsMessage(TextMessage requestMessage) {
+		NewsMessage responseMessage = new NewsMessage();
+		responseMessage.setFromUserName(requestMessage.getToUserName());
+		responseMessage.setToUserName(requestMessage.getFromUserName());
+		responseMessage.setArticles(getMultiListArticles());
+		return ResponseMessageUtil.genNewsMessage(responseMessage);
+	}
+	
 	public String genRespSingleNewsMessage(TextMessage requestMessage) {
 		NewsMessage responseMessage = new NewsMessage();
 		responseMessage.setFromUserName(requestMessage.getToUserName());
 		responseMessage.setToUserName(requestMessage.getFromUserName());
 		responseMessage.setArticles(getListArticles());
 		return ResponseMessageUtil.genNewsMessage(responseMessage);
+	}
+	
+	private List<Article> getMultiListArticles() {
+		List<Article> lsArticles = new ArrayList<Article>();
+		Article article = new Article();
+		article.setUrl("http://121.42.11.139/blog/gotoBlogDetail.do?id=13");
+		article.setPicUrl("http://121.42.11.139/blog/images/icon/blog_java_icon.png");
+		article.setTitle("若干个学生围成一个圈开始从1数数，3的倍数踢出圈，问最后一个是第几个学生，用OOP思想实现");
+		article.setDescription("若干个学生围成一个圈开始从1数数，3的倍数踢出圈，问最后一个是第几个学生，用OOP思想实现");
+		lsArticles.add(article);
+		
+		Article article2 = new Article();
+		article2.setUrl("http://121.42.11.139/blog/gotoBlogDetail.do?id=8");
+		article2.setPicUrl("http://121.42.11.139/blog/images/icon/blog_maven_icon.png");
+		article2.setTitle("Maven to implement junit test and integration test");
+		article2.setDescription("Maven to implement junit test and integration test");
+		lsArticles.add(article2);
+		
+		Article article3 = new Article();
+		article3.setUrl("http://121.42.11.139/blog/gotoBlogDetail.do?id=9");
+		article3.setPicUrl("http://121.42.11.139/blog/images/icon/blog_default_js_icon.png");
+		article3.setTitle("java bean convert to JSON string and JSON string convert to java bean");
+		article3.setDescription("java bean convert to JSON string and JSON string convert to java bean");
+		lsArticles.add(article3);
+		return lsArticles;
+		
 	}
 	
 	private List<Article> getListArticles() {
