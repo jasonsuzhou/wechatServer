@@ -14,15 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mh.wechat.entity.message.req.TextMessage;
-import com.mh.wechat.entity.message.resp.RespTextMessage;
-import com.mh.wechat.util.RequestMessageUtil;
-import com.mh.wechat.util.ResponseMessageUtil;
+import com.mh.wechat.service.WeChatServiceImpl;
 import com.mh.wechat.util.WeChatUtil;
 
 @Controller
 @RequestMapping("/wechat/authen")
 public class WeChatController {
+	private WeChatServiceImpl weChatService = WeChatServiceImpl.getInstance();
 
 	/**
 	 * this method will invoked by the wechat server. wechat server will send 3
@@ -59,13 +57,11 @@ public class WeChatController {
 		SAXReader reader = new SAXReader();
 		Document document = reader.read(is);
 		Element eRoot = document.getRootElement();
-		TextMessage requestMessage = RequestMessageUtil.genTextMessage(eRoot);
-		RespTextMessage responseMessage = new RespTextMessage();
-		responseMessage.setContent("This is a auto reply message");
-		responseMessage.setFromUserName(requestMessage.getToUserName());
-		responseMessage.setFuncFlag(0);
-		responseMessage.setToUserName(requestMessage.getFromUserName());
-		String respMsg = ResponseMessageUtil.genTextMessage(responseMessage);
+		String respMsg = this.weChatService.processRequest(eRoot);
+		this.returnMsg2WeChat(response, respMsg);
+	}
+
+	private void returnMsg2WeChat(HttpServletResponse response, String respMsg) {
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();

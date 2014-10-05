@@ -6,12 +6,12 @@ import com.mh.wechat.entity.message.req.TextMessage;
 
 public class RequestMessageUtil {
 
-	private static final String NODE_TO_USER_NAME = "ToUserName";
-	private static final String NODE_FROM_USER_NAME = "FromUserName";
-	private static final String NODE_CREATED_TIME = "CreateTime";
-	private static final String NODE_MSG_TYPE = "MsgType";
-	private static final String NODE_CONTENT = "Content";
-	private static final String NODE_MSG_ID = "MsgId";
+	public static final String NODE_TO_USER_NAME = "ToUserName";
+	public static final String NODE_FROM_USER_NAME = "FromUserName";
+	public static final String NODE_CREATED_TIME = "CreateTime";
+	public static final String NODE_MSG_TYPE = "MsgType";
+	public static final String NODE_CONTENT = "Content";
+	public static final String NODE_MSG_ID = "MsgId";
 
 	public static TextMessage genTextMessage(Element eRoot) {
 		TextMessage message = new TextMessage();
