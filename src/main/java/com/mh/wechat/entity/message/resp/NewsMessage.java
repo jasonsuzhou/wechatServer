@@ -27,10 +27,6 @@ public class NewsMessage extends ResponseMessage {
 		return ArticleCount;
 	}
 
-	public void setArticleCount(int articleCount) {
-		ArticleCount = articleCount;
-	}
-
 	public List<Article> getArticles() {
 		return Articles;
 	}

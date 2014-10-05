@@ -53,24 +53,12 @@ public class ResponseMessage {
 		return CreateTime;
 	}
 
-	public void setCreateTime(long createTime) {
-		CreateTime = createTime;
-	}
-
 	public String getMsgType() {
 		return MsgType;
 	}
 
-	public void setMsgType(String msgType) {
-		MsgType = msgType;
-	}
-
 	public long getMsgId() {
 		return MsgId;
-	}
-
-	public void setMsgId(long msgId) {
-		MsgId = msgId;
 	}
 
 	public int getFuncFlag() {
