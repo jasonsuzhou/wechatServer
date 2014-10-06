@@ -2,6 +2,7 @@ package com.mh.wechat.util;
 
 import org.dom4j.Element;
 
+import com.mh.wechat.entity.message.req.EventMessage;
 import com.mh.wechat.entity.message.req.TextMessage;
 
 public class RequestMessageUtil {
@@ -12,6 +13,8 @@ public class RequestMessageUtil {
 	public static final String NODE_MSG_TYPE = "MsgType";
 	public static final String NODE_CONTENT = "Content";
 	public static final String NODE_MSG_ID = "MsgId";
+	public static final String NODE_EVENT_TYPE = "Event";
+	public static final String NODE_EVENT_KEY = "EventKey";
 
 	public static TextMessage genTextMessage(Element eRoot) {
 		TextMessage message = new TextMessage();
@@ -21,6 +24,17 @@ public class RequestMessageUtil {
 		message.setMsgId(Long.valueOf(XMLUtil.getChildNodeValue(eRoot, NODE_MSG_ID, true)));
 		message.setMsgType(XMLUtil.getChildNodeValue(eRoot, NODE_MSG_TYPE, true));
 		message.setToUserName(XMLUtil.getChildNodeValue(eRoot, NODE_TO_USER_NAME, true));
+		return message;
+	}
+
+	public static EventMessage genEventMessage(Element eRoot) {
+		EventMessage message = new EventMessage();
+		message.setCreateTime(Long.valueOf(XMLUtil.getChildNodeValue(eRoot, NODE_CREATED_TIME, true)));
+		message.setFromUserName(XMLUtil.getChildNodeValue(eRoot, NODE_FROM_USER_NAME, true));
+		message.setMsgType(XMLUtil.getChildNodeValue(eRoot, NODE_MSG_TYPE, true));
+		message.setToUserName(XMLUtil.getChildNodeValue(eRoot, NODE_TO_USER_NAME, true));
+		message.setEvent(XMLUtil.getChildNodeValue(eRoot, NODE_EVENT_TYPE, true));
+		message.setEventKey(XMLUtil.getChildNodeValue(eRoot, NODE_EVENT_KEY, true));
 		return message;
 	}
 

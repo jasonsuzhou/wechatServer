@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+	<button>
+		<name>生活助手</name>
+		<sub_button>
+			<button>
+				<key>11</key>
+				<name>天气预报</name>
+				<type>view</type>
+				<url><![CDATA[http://weather1.sina.cn/?vt=4]]></url>
+			</button>
+			<button>
+				<key>12</key>
+				<name>车型库</name>
+				<type>view</type>
+				<url><![CDATA[http://data.auto.sina.cn/?vt=4]]></url>
+			</button>
+		</sub_button>
+	</button>
+	<button>
+		<name>帮助</name>
+		<sub_button>
+			<button>
+				<key>21</key>
+				<name>关于我</name>
+				<type>click</type>
+			</button>
+		</sub_button>
+	</button>
+</menus>

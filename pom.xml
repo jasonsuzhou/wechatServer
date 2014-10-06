@@ -64,6 +64,18 @@
 			<version>4.8</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- json tool -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+		<!-- end jason tool -->
 	</dependencies>
 	<build>
 		<finalName>wechatServer</finalName>

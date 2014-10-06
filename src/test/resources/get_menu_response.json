@@ -1,0 +1,34 @@
+{
+    "menu": {
+        "button": [
+            {
+                "name": "生活助手", 
+                "sub_button": [
+                    {
+                        "type": "view", 
+                        "name": "天气预报", 
+                        "url": "http://weather1.sina.cn/?vt=4", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "view", 
+                        "name": "车型库", 
+                        "url": "http://data.auto.sina.cn/?vt=4", 
+                        "sub_button": [ ]
+                    }
+                ]
+            }, 
+            {
+                "name": "帮助", 
+                "sub_button": [
+                    {
+                        "type": "click", 
+                        "name": "关于我", 
+                        "key": "21", 
+                        "sub_button": [ ]
+                    }
+                ]
+            }
+        ]
+    }
+}

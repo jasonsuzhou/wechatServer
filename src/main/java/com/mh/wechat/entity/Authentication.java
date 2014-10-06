@@ -8,7 +8,7 @@ import com.mh.wechat.util.WeChatUtil;
  * @author jasonyao
  * 
  */
-public class Authenticaion {
+public class Authentication {
 	/**
 	 * this is encrypted by SHA-1 wechat server when he send to me
 	 */

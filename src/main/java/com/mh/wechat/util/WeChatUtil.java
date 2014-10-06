@@ -1,10 +1,21 @@
 package com.mh.wechat.util;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import javax.net.ssl.HttpsURLConnection;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.mh.wechat.constants.Const;
+import com.mh.wechat.entity.AccessToken;
+import com.mh.wechat.entity.WeChatResponse;
 
 public class WeChatUtil {
 
@@ -67,5 +78,73 @@ public class WeChatUtil {
 		tempArr[1] = Digit[mByte & 0X0F];
 		String s = new String(tempArr);
 		return s;
+	}
+
+	public static String getGlobalAccessToken() {
+		return AccessToken.getInstance().getAccessToken();
+	}
+
+	public static WeChatResponse sendHttpsRequest(String requestUrl, String method, String data) {
+		return parseWeChatResponseJson(httpsRequest(requestUrl, method, data));
+	}
+
+	public static WeChatResponse parseWeChatResponseJson(String json) {
+		try {
+			return new WeChatResponse().parseJson(json);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * call the https URL to get the response string
+	 * 
+	 * @param requestUrl
+	 * @param method
+	 * @param data
+	 * @return
+	 */
+	public static String httpsRequest(String requestUrl, String method, String data) {
+		StringBuilder sb = new StringBuilder("");
+		try {
+			URL url = new URL(requestUrl);
+			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+			urlConnection.setDoOutput(true);
+			urlConnection.setDoInput(true);
+			urlConnection.setUseCaches(false);
+			urlConnection.setRequestMethod(method);
+			if (Const.RequestMethod.GET.equals(method)) {
+				urlConnection.connect();
+			} else {
+				if (StringUtils.isNotBlank(data)) {
+					OutputStream outputStream = urlConnection.getOutputStream();
+					outputStream.write(data.getBytes("UTF-8"));
+					outputStream.close();
+				}
+			}
+			InputStream inputStream = urlConnection.getInputStream();
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+			String str = null;
+			while ((str = bufferedReader.readLine()) != null) {
+				sb.append(str);
+			}
+			bufferedReader.close();
+			inputStreamReader.close();
+			inputStream.close();
+			inputStream = null;
+			urlConnection.disconnect();
+			return sb.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+		return "";
+	}
+
+	public static void main(String[] args) throws Exception {
+		System.out.println(getGlobalAccessToken());
 	}
 }
