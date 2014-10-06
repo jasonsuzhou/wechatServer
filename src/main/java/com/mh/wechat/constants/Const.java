@@ -32,6 +32,10 @@ public class Const {
 		 */
 		public static final String CLICK = "CLICK";
 		/**
+		 * View the response URL
+		 */
+		public static final String VIEW = "VIEW";
+		/**
 		 * When user follow the official account
 		 */
 		public static final String SUBSCRIBE = "subscribe";
@@ -39,6 +43,10 @@ public class Const {
 		 * When user unfollow the official account
 		 */
 		public static final String UNSUBSCRIBE = "unsubscribe";
+	}
+
+	public interface EventKey {
+		public static final String ABOUT_ME = "21";
 	}
 
 	public interface RequestMethod {

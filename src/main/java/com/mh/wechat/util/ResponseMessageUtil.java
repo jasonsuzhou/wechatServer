@@ -7,6 +7,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import com.mh.wechat.entity.message.req.EventMessage;
 import com.mh.wechat.entity.message.resp.Article;
 import com.mh.wechat.entity.message.resp.NewsMessage;
 import com.mh.wechat.entity.message.resp.RespTextMessage;
@@ -25,6 +26,8 @@ public class ResponseMessageUtil {
 	private static final String NODE_DESCRIPTION = "Description";
 	private static final String NODE_PIC_URL = "PicUrl";
 	private static final String NODE_URL = "Url";
+	public static final String NODE_EVENT_TYPE = "Event";
+	public static final String NODE_EVENT_KEY = "EventKey";
 
 	public static String genTextMessage(RespTextMessage message) {
 		Document document = XMLUtil.createDocument(NODE_ROOT);
@@ -36,7 +39,7 @@ public class ResponseMessageUtil {
 		XMLUtil.populateCDATAElement(eRoot, NODE_CONTENT, message.getContent());
 		return document.asXML();
 	}
-
+	
 	public static String genNewsMessage(NewsMessage message) {
 		Document document = XMLUtil.createDocument(NODE_ROOT);
 		Element eRoot = document.getRootElement();

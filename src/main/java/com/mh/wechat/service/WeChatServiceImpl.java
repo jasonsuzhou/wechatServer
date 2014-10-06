@@ -24,6 +24,7 @@ public class WeChatServiceImpl {
 	}
 
 	public String processRequest(Element eRoot) {
+		// the process result will be a xml format string
 		String processResult = "";
 		String messageType = XMLUtil.getChildNodeValue(eRoot, RequestMessageUtil.NODE_MSG_TYPE, true);
 		if (Const.MessageType.TEXT.equals(messageType)) {
@@ -38,12 +39,22 @@ public class WeChatServiceImpl {
 			}
 		} else if (Const.MessageType.EVENT.equals(messageType)) {
 			EventMessage requestMessage = RequestMessageUtil.genEventMessage(eRoot);
+			String fromUser = requestMessage.getToUserName();
+			String toUser = requestMessage.getFromUserName();
 			String eventType = requestMessage.getEvent();
+			// when the followed you, he/she will received this message
 			if (eventType.equals(Const.EventType.SUBSCRIBE)) {
 				String content = "欢迎加我为关注，本屌正在开发新功能。。。先试试回复1或者2吧";
-				String fromUser = requestMessage.getToUserName();
-				String toUser = requestMessage.getFromUserName();
 				processResult = genRespTextMessage(content, fromUser, toUser);
+			} else if (eventType.equals(Const.EventType.UNSUBSCRIBE)) {
+				// user unfollowed, can log here
+			} else if (eventType.equals(Const.EventType.CLICK)) {
+				// sub menu click
+				String eventKey = requestMessage.getEventKey();
+				if (Const.EventKey.ABOUT_ME.equals(eventKey)) {
+					String content = "姚敏华，男，一个80后程序员！10年入行，从业已四年有余，主要从事银行方面的系统开发。";
+					processResult = genRespTextMessage(content, fromUser, toUser);
+				}
 			}
 		} else {
 			// TODO
