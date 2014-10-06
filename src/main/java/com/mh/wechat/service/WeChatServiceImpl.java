@@ -44,7 +44,7 @@ public class WeChatServiceImpl {
 			String eventType = requestMessage.getEvent();
 			// when the followed you, he/she will received this message
 			if (eventType.equals(Const.EventType.SUBSCRIBE)) {
-				String content = "欢迎加我为关注，本屌正在开发新功能。。。先试试回复1或者2吧";
+				String content = "欢迎加我为关注，新功能会持续更新...";
 				processResult = genRespTextMessage(content, fromUser, toUser);
 			} else if (eventType.equals(Const.EventType.UNSUBSCRIBE)) {
 				// user unfollowed, can log here
@@ -54,6 +54,12 @@ public class WeChatServiceImpl {
 				if (Const.EventKey.ABOUT_ME.equals(eventKey)) {
 					String content = "姚敏华，男，一个80后程序员！10年入行，从业已四年有余，主要从事银行方面的系统开发。";
 					processResult = genRespTextMessage(content, fromUser, toUser);
+				} else if (Const.EventKey.SINGLE_IMAGE_ARTICLE_DEMO.equals(eventKey)) {
+					TextMessage message = RequestMessageUtil.genTextMessage(eRoot);
+					processResult = this.genRespSingleNewsMessage(message);
+				} else if (Const.EventKey.MULTI_IMAGE_ARTICLE_DEMO.equals(eventKey)) {
+					TextMessage message = RequestMessageUtil.genTextMessage(eRoot);
+					processResult = genRespTextMessage(message);
 				}
 			}
 		} else {

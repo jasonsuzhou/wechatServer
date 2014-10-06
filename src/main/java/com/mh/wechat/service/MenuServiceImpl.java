@@ -20,7 +20,7 @@ public class MenuServiceImpl {
 
 	/**
 	 * call wechat API to create menu<br/>
-	 * if success will return {"errcode":0,"errmsg":"ok"}<br/>
+	 * if success will return {"errcode":0,"e rrmsg":"ok"}<br/>
 	 * else will return {"errcode":40018,"errmsg":"invalid button name size"}
 	 */
 	public void createMenu() {

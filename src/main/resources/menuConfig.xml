@@ -27,6 +27,12 @@
 				<type>view</type>
 				<url><![CDATA[http://weather1.sina.cn/?vt=4]]></url>
 			</button>
+			<button>
+				<key>15</key>
+				<name>快递查询</name>
+				<type>view</type>
+				<url><![CDATA[http://m.kuaidi100.com/]]></url>
+			</button>
 		</sub_button>
 	</button>
 	<button>
@@ -35,6 +41,21 @@
 			<button>
 				<key>21</key>
 				<name>关于我</name>
+				<type>click</type>
+			</button>
+		</sub_button>
+	</button>
+	<button>
+		<name>Demo</name>
+		<sub_button>
+			<button>
+				<key>31</key>
+				<name>单图文消息</name>
+				<type>click</type>
+			</button>
+			<button>
+				<key>32</key>
+				<name>多图文消息</name>
 				<type>click</type>
 			</button>
 		</sub_button>
