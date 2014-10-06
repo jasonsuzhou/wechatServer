@@ -55,17 +55,31 @@ public class WeChatServiceImpl {
 					String content = "姚敏华，男，一个80后程序员！10年入行，从业已四年有余，主要从事银行方面的系统开发。";
 					processResult = genRespTextMessage(content, fromUser, toUser);
 				} else if (Const.EventKey.SINGLE_IMAGE_ARTICLE_DEMO.equals(eventKey)) {
-					TextMessage message = RequestMessageUtil.genTextMessage(eRoot);
-					processResult = this.genRespSingleNewsMessage(message);
+					processResult = this.genRespSingleNewsMessage(fromUser, toUser);
 				} else if (Const.EventKey.MULTI_IMAGE_ARTICLE_DEMO.equals(eventKey)) {
-					TextMessage message = RequestMessageUtil.genTextMessage(eRoot);
-					processResult = genRespTextMessage(message);
+					processResult = genRespMultiNewsMessage(fromUser, toUser);
 				}
 			}
 		} else {
 			// TODO
 		}
 		return processResult;
+	}
+
+	private String genRespMultiNewsMessage(String fromUser, String toUser) {
+		NewsMessage responseMessage = new NewsMessage();
+		responseMessage.setFromUserName(fromUser);
+		responseMessage.setToUserName(toUser);
+		responseMessage.setArticles(getMultiListArticles());
+		return ResponseMessageUtil.genNewsMessage(responseMessage);
+	}
+
+	private String genRespSingleNewsMessage(String fromUser, String toUser) {
+		NewsMessage responseMessage = new NewsMessage();
+		responseMessage.setFromUserName(fromUser);
+		responseMessage.setToUserName(toUser);
+		responseMessage.setArticles(getListArticles());
+		return ResponseMessageUtil.genNewsMessage(responseMessage);
 	}
 
 	private String genRespTextMessage(TextMessage requestMessage) {
