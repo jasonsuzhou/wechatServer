@@ -5,15 +5,27 @@
 		<sub_button>
 			<button>
 				<key>11</key>
-				<name>天气预报</name>
+				<name>车型查询</name>
 				<type>view</type>
-				<url><![CDATA[http://weather1.sina.cn/?vt=4]]></url>
+				<url><![CDATA[http://data.auto.sina.cn/?vt=4]]></url>
 			</button>
 			<button>
 				<key>12</key>
-				<name>车型库</name>
+				<name>手机归属</name>
 				<type>view</type>
-				<url><![CDATA[http://data.auto.sina.cn/?vt=4]]></url>
+				<url><![CDATA[http://shouji.911cha.com/]]></url>
+			</button>
+			<button>
+				<key>13</key>
+				<name>汇率查询</name>
+				<type>view</type>
+				<url><![CDATA[http://huilv.911cha.com/]]></url>
+			</button>
+			<button>
+				<key>14</key>
+				<name>天气预报</name>
+				<type>view</type>
+				<url><![CDATA[http://weather1.sina.cn/?vt=4]]></url>
 			</button>
 		</sub_button>
 	</button>

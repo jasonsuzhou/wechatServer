@@ -111,7 +111,7 @@ public class MenuServiceImpl {
 	public static void main(String[] args) throws Exception {
 		// System.out.println(new
 		// MenuServiceImpl().getCreateMenuJsonFromConfig());
-		// new MenuServiceImpl().createMenu();
+		new MenuServiceImpl().createMenu();
 		System.out.println(new MenuServiceImpl().getMenu());
 	}
 }
