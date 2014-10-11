@@ -13,14 +13,12 @@
 
 	<mvc:annotation-driven />
 	
-	<!-- 
     <mvc:interceptors>  
         <mvc:interceptor>  
            <mvc:mapping path="/admin/*" />
-           <bean class="com.mh.wechat.interceptor.SessionInterceptor"></bean>  
+           <bean class="com.mh.wechat.interceptor.LoginInterceptor"></bean>  
         </mvc:interceptor>  
     </mvc:interceptors> 
- -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />

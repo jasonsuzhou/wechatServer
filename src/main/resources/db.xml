@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+	<table name="user" primary-key="username">
+		<row>
+			<username>jasonyao</username>
+			<password>7F6356CD5F049FE59B17193C215071BD8797D755</password>
+		</row>
+		<row>
+			<username>test</username>
+			<password>A94A8FE5CCB19BA61C4C0873D391E987982FBBD3</password>
+		</row>
+	</table>
+</database>

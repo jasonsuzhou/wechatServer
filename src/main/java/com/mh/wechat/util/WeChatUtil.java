@@ -52,12 +52,28 @@ public class WeChatUtil {
 	}
 
 	/**
+	 * calculate the SHA1 summary
+	 * @param value
+	 * @return
+	 */
+	public static String genSHA1Summary(String value) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-1");
+			byte[] digest = md.digest(value.toString().getBytes());
+			return byteToStr(digest);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+
+	/**
 	 * convert the bytes to the hex string
 	 * 
 	 * @param byteArray
 	 * @return
 	 */
-	private static String byteToStr(byte[] byteArray) {
+	public static String byteToStr(byte[] byteArray) {
 		String strDigest = "";
 		for (int i = 0; i < byteArray.length; i++) {
 			strDigest += byteToHexStr(byteArray[i]);

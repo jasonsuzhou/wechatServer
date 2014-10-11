@@ -144,6 +144,13 @@ public class XMLUtil {
 		return e.elements(strNodeName);
 	}
 
+	public static List<Element> findAllChildNodes(Element eParent) {
+		if (eParent == null) {
+			return null;
+		}
+		return eParent.elements();
+	}
+
 	public static String getChildNodeValue(Node nParent, String strChildNodeName, boolean isTrim) {
 		if (nParent == null) {
 			return null;
@@ -275,4 +282,5 @@ public class XMLUtil {
 		Element eRoot = DocumentHelper.createElement(rootName);
 		return DocumentHelper.createDocument(eRoot);
 	}
+
 }
