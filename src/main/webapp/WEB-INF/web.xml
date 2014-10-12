@@ -30,6 +30,11 @@
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>initData</servlet-name>
+		<servlet-class>com.mh.wechat.web.util.InitDataServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	<welcome-file-list>
 		<welcome-file>
 			login.jsp

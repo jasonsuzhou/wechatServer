@@ -1,7 +1,7 @@
 package com.mh.wechat.dao;
 
 import com.mh.wechat.dao.impl.XMLUserDAOImpl;
-import com.mh.wechat.util.SystemConfig;
+import com.mh.wechat.web.util.SystemConfig;
 
 public class DAOFactory {
 

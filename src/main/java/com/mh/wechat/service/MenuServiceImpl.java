@@ -65,8 +65,8 @@ public class MenuServiceImpl {
 	}
 
 	public String getCreateMenuJsonFromConfig() {
-		List<MenuButton> lsMenuButton = new ArrayList<MenuButton>();
 		try {
+			List<MenuButton> lsMenuButton = new ArrayList<MenuButton>();
 			File file = new ClassPathResource("menuConfig.xml").getFile();
 			Document document = XMLUtil.xmlFileToDom(file);
 			Element eRoot = document.getRootElement();

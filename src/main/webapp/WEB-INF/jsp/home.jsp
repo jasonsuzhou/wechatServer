@@ -23,7 +23,12 @@
   </div>
 
   <div data-role="content">
-    <p>TODO</p>
+    <div data-role="navbar">
+    	<ul>
+    		<li><a href="#page-local-menu" data-icon="search">Local Menu</a></li>
+    		<li><a href="#page-server-menu" data-icon="search">Server Menu</a></li>
+    	</ul>
+    </div>
   </div>
 
   <div data-role="footer">
@@ -48,7 +53,26 @@
   </div>
 
   <div data-role="content">
-    <p>TODO</p>
+  	<div data-role="collapsible-set">
+	    <div data-role="collapsible">
+	      <h1>Interface Configuration</h1>
+	      <p>APP ID:
+	      	<input type="text" name="app-id" id="app-id">
+	      </p> 
+	      <p>APP SECRET:
+	      	<input type="text" name="app-secret" id="app-secret">
+	      </p>
+	      <p>
+	      	<button class="ui-btn ui-corner-all ui-btn-b" id="modify-btn">Save Changes</button>
+	      </p>
+	    </div>
+	    <div data-role="collapsible" data-collapsed="false">
+	      <h1>API Configuration</h1>
+	      <p>Create Menu URL:</p>
+	      <p>Query Menu URL:</p>
+	      <p>Delete Menu URL:</p>
+	    </div>
+    </div>
   </div>
 
   <div data-role="footer">
@@ -59,11 +83,29 @@
     	</ul>
     </div>
   </div>
-</div> 
-
-<div data-role="page" id="page-changepwd">
-	TODO
+  <script type="text/javascript">
+  	$(document).on('pageshow', '#pagetwo', function(){
+  		$.ajax({
+  			url : 'syscfg',
+  			type : 'GET',
+  			dataType : 'json',
+  			success : function(data) {
+  				$('#app-id').val(data.app_id);
+  				$('#app-secret').val(data.app_secret);
+  			},
+  			error : function(data) {
+  				alert(data);
+  			}
+  		});
+  	});
+  </script>
 </div>
+
+ 
+<jsp:include page="menu/local_list.jsp"></jsp:include>
+<jsp:include page="menu/server_list.jsp"></jsp:include>
+
+<jsp:include page="user/change_pwd.jsp"></jsp:include>
 
 </body>
 </html>
