@@ -21,7 +21,7 @@
 					$.each(buttons, function(i, item){
 						result += "<div data-role=\"collapsible\">";
 						result += "<h1>" + item.name + "</h1>";
-						result += "<ol data-role=\"listview\">";
+						result += "<ol data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Search...\">";
 						$.each(item.sub_button, function(i, subitem) {
 							result += "<li><a>" + subitem.name + "</a></li>";
 						});

@@ -62,4 +62,21 @@ public class MenuConfig {
 		return menu;
 	}
 
+	public static MenuButton getMenuByKey(String key) {
+		List<MenuButton> list = getMenu().getButton();
+		for (MenuButton button : list) {
+			if (key.equals(button.getKey())) {
+				return button;
+			} else {
+				List<MenuButton> sublist = button.getSub_button();
+				for (MenuButton subbutton : sublist) {
+					if (key.equals(subbutton.getKey())) {
+						return subbutton;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
 }
