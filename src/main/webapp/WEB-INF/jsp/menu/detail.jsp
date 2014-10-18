@@ -39,7 +39,8 @@ MenuButton menu = (MenuButton) request.getAttribute("data");
 	<script type="text/javascript">
 	$(document).on('pageshow', '#page-local-menu-detail', pageShow);
 	function pageShow() {
-		$(document).unbind('pageshow');
+		//$(document).unbind('pageshow');
+		$(document).off('pageshow', '#page-local-menu-detail');
 	}
 	</script>
 </div>
