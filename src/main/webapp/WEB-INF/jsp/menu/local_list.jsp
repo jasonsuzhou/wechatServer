@@ -13,8 +13,8 @@
 			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
   			<div data-role="main" class="ui-content">
   				<h2>Overwritten server menu?</h2>
-  				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Go Back</a>
-  				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a ui-icon-check ui-btn-icon-left">Continue</a>
+  				<a href="#" data-mini="true" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Go Back</a>
+  				<a href="#" data-mini="true" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a ui-icon-check ui-btn-icon-left">Continue</a>
   			</div>
 		</div>
 	</div>

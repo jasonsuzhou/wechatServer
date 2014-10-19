@@ -4,10 +4,9 @@ import java.util.Date;
 
 import com.mh.wechat.constants.Const;
 import com.mh.wechat.util.WeChatUtil;
+import com.mh.wechat.web.util.SystemConfig;
 
 public class AccessToken {
-
-	private final static String ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
 	private static AccessToken instance = new AccessToken();
 
@@ -42,7 +41,9 @@ public class AccessToken {
 	 */
 	private AccessToken genToken() {
 		if (this.isExpired()) {
-			String requestUrl = ACCESS_TOKEN.replace("APPID", Const.APP_ID).replace("APPSECRET", Const.APP_SECRET);
+			String appId = SystemConfig.getAppId();
+			String appSecret = SystemConfig.getAppSecret();
+			String requestUrl = SystemConfig.getAccessTokenAPI().replace("APPID", appId).replace("APPSECRET", appSecret);
 			WeChatResponse response = WeChatUtil.sendHttpsRequest(requestUrl, Const.RequestMethod.GET, null);
 			this.accessToken = response.getAccess_token();
 			this.expiresIn = Long.valueOf(response.getExpires_in());

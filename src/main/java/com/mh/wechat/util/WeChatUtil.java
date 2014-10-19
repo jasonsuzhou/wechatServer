@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.mh.wechat.constants.Const;
 import com.mh.wechat.entity.AccessToken;
 import com.mh.wechat.entity.WeChatResponse;
+import com.mh.wechat.web.util.SystemConfig;
 
 public class WeChatUtil {
 
@@ -28,7 +29,8 @@ public class WeChatUtil {
 	 * @return
 	 */
 	public static boolean checkSignature(String signature, String timestamp, String nonce) {
-		String[] arr = new String[] { Const.MY_WECHAT_TOKEN, timestamp, nonce };
+		String wechatToken = SystemConfig.getWeChatToken();
+		String[] arr = new String[] { wechatToken, timestamp, nonce };
 		// sequence the signature, timestamp, nonce as the dictionary sort.
 		Arrays.sort(arr);
 		StringBuilder content = new StringBuilder();

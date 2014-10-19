@@ -15,6 +15,7 @@ import com.mh.wechat.entity.MenuButton;
 import com.mh.wechat.entity.WeChatResponse;
 import com.mh.wechat.util.WeChatUtil;
 import com.mh.wechat.util.XMLUtil;
+import com.mh.wechat.web.util.SystemConfig;
 
 public class MenuServiceImpl {
 
@@ -26,7 +27,8 @@ public class MenuServiceImpl {
 	public void createMenu() {
 		String token = WeChatUtil.getGlobalAccessToken();
 		if (StringUtils.isNotBlank(token)) {
-			String requestUrl = Const.WeChatMenuAPI.CREATE_MENU.replace(Const.ACCESS_TOKEN, token);
+			String api = SystemConfig.getCreateMenuAPI();
+			String requestUrl = api.replace(Const.ACCESS_TOKEN, token);
 			String data = this.getCreateMenuJsonFromConfig();
 			WeChatResponse response = WeChatUtil.sendHttpsRequest(requestUrl, Const.RequestMethod.POST, data);
 			System.out.println("error code::" + response.getErrcode());
@@ -43,7 +45,8 @@ public class MenuServiceImpl {
 		String token = WeChatUtil.getGlobalAccessToken();
 		String reuslt = "";
 		if (StringUtils.isNotBlank(token)) {
-			String requestUrl = Const.WeChatMenuAPI.GET_MENU.replace(Const.ACCESS_TOKEN, token);
+			String api = SystemConfig.getQueryMenuAPI();
+			String requestUrl = api.replace(Const.ACCESS_TOKEN, token);
 			reuslt = WeChatUtil.httpsRequest(requestUrl, Const.RequestMethod.GET, null);
 		}
 		return reuslt;
@@ -58,7 +61,8 @@ public class MenuServiceImpl {
 		String token = WeChatUtil.getGlobalAccessToken();
 		String result = "";
 		if (StringUtils.isNotBlank(token)) {
-			String requestUrl = Const.WeChatMenuAPI.DELETE_MENU.replace(Const.ACCESS_TOKEN, token);
+			String api = SystemConfig.getDeleteMenuAPI();
+			String requestUrl = api.replace(Const.ACCESS_TOKEN, token);
 			result = WeChatUtil.httpsRequest(requestUrl, Const.RequestMethod.GET, null);
 		}
 		return result;

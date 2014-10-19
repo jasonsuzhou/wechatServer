@@ -2,9 +2,6 @@ package com.mh.wechat.constants;
 
 public class Const {
 
-	public static final String MY_WECHAT_TOKEN = "jasonyao";
-	public static final String APP_ID = "wx11a1ad9eb6a1a5b3";
-	public static final String APP_SECRET = "ce5db7a73132c64010a2aeec57e24549";
 	public static final String ACCESS_TOKEN = "ACCESS_TOKEN";
 
 	/**
@@ -54,12 +51,6 @@ public class Const {
 	public interface RequestMethod {
 		public static final String GET = "GET";
 		public static final String POST = "POST";
-	}
-
-	public interface WeChatMenuAPI {
-		public static final String CREATE_MENU = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-		public static final String GET_MENU = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN";
-		public static final String DELETE_MENU = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN";
 	}
 
 }
