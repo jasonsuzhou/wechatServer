@@ -59,7 +59,6 @@ public class WeChatServiceImpl {
 					sb.append("Email:jason.yao525@gmail.com").append("\r\n");
 					sb.append("Blog:http://121.42.11.139/blog").append("\r\n");
 					sb.append("GitHub:https://github.com/jasonsuzhou").append("\r\n");
-					sb.append("Jenkins:http://121.42.11.139/jenkins").append("\r\n");
 					processResult = genRespTextMessage(sb.toString(), fromUser, toUser);
 				} else if(Const.EventKey.SKILL_SETS.equals(eventKey)){
 					String  content = ""; 
@@ -73,6 +72,13 @@ public class WeChatServiceImpl {
 					content += "8. Excellent in Ubuntu/Mac OSX/AIX.\r\n";
 					content += "9. Pass CET-6 Fluent in read/spoken/written.\r\n";
 					content += "10 Have fan with WeChat Development";
+					processResult = genRespTextMessage(content, fromUser, toUser);
+				} else if(Const.EventKey.WORKS.equals(eventKey)) {
+					String content = "";
+					content += "Blog(My personal blog with SpringMVC Restful):http://121.42.11.139/blog\r\n";
+					content += "WechatServer(My wechat official account backend with JQuery Mobile):http://121.42.11.139/wechatServer\r\n";
+					content += "PMS(Manage the pictures with SSH):http://121.42.11.139/PMS\r\n";
+					content += "Jenkins(CI tools to build my projects):http://121.42.11.139/jenkins\r\n";
 					processResult = genRespTextMessage(content, fromUser, toUser);
 				} else if (Const.EventKey.SINGLE_IMAGE_ARTICLE_DEMO.equals(eventKey)) {
 					processResult = this.genRespSingleNewsMessage(fromUser, toUser);

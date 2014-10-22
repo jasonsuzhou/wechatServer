@@ -53,6 +53,11 @@
 				<name>Skills</name>
 				<type>click</type>
 			</button>
+			<button>
+				<key>24</key>
+				<name>Works</name>
+				<type>click</type>
+			</button>
 		</sub_button>
 	</button>
 	<button>
