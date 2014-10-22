@@ -23,17 +23,19 @@ public class Menu {
 	}
 
 	public String genJsonMenu() throws JsonProcessingException, IOException {
-		String result = null;
-		OutputStream os = new ByteArrayOutputStream();
-		JsonGenerator generator = new ObjectMapper().getJsonFactory().createJsonGenerator(os, JsonEncoding.UTF8);
-		generator.writeObject(this);
-		result = os.toString();
-		if (generator != null) {
-			generator.close();
-		}
-		if (os != null) {
-			os.close();
-		}
+		ObjectMapper objMapper = new ObjectMapper();
+		String result = objMapper.writeValueAsString(this);
+		//String result = null;
+		//OutputStream os = new ByteArrayOutputStream();
+		//JsonGenerator generator = new ObjectMapper().getJsonFactory().createJsonGenerator(os, JsonEncoding.UTF8);
+		//generator.writeObject(this);
+		//result = os.toString();
+		//if (generator != null) {
+		//	generator.close();
+		//}
+		//if (os != null) {
+		//	os.close();
+		//}
 		return result;
 	}
 

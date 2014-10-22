@@ -44,6 +44,8 @@ public class Const {
 
 	public interface EventKey {
 		public static final String ABOUT_ME = "21";
+		public static final String CONTACT_ME = "22";
+		public static final String SKILL_SETS = "23";
 		public static final String SINGLE_IMAGE_ARTICLE_DEMO = "31";
 		public static final String MULTI_IMAGE_ARTICLE_DEMO = "32";
 	}

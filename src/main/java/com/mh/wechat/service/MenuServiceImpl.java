@@ -24,7 +24,7 @@ public class MenuServiceImpl {
 	 * if success will return {"errcode":0,"e rrmsg":"ok"}<br/>
 	 * else will return {"errcode":40018,"errmsg":"invalid button name size"}
 	 */
-	public void createMenu() {
+	public WeChatResponse createMenu() {
 		String token = WeChatUtil.getGlobalAccessToken();
 		if (StringUtils.isNotBlank(token)) {
 			String api = SystemConfig.getCreateMenuAPI();
@@ -33,6 +33,9 @@ public class MenuServiceImpl {
 			WeChatResponse response = WeChatUtil.sendHttpsRequest(requestUrl, Const.RequestMethod.POST, data);
 			System.out.println("error code::" + response.getErrcode());
 			System.out.println("error message::" + response.getErrmsg());
+			return response;
+		} else {
+			return null;
 		}
 	}
 

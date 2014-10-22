@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mh.wechat.entity.Menu;
 import com.mh.wechat.entity.MenuButton;
+import com.mh.wechat.entity.WeChatResponse;
 import com.mh.wechat.service.MenuServiceImpl;
 import com.mh.wechat.web.util.MenuConfig;
 
@@ -43,6 +44,33 @@ public class MenuController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("data", menuButton);
 		return new ModelAndView("menu/detail", map);
+	}
+
+	@RequestMapping("/deleteAllServerMenu")
+	public @ResponseBody
+	Object deleteAllServerMenu() throws Exception {
+		Map<String, String> map = new HashMap<String, String>();
+		String result = menuService.deleteAllMenu();
+		WeChatResponse response = new WeChatResponse().parseJson(result);
+		if ("0".equals(response.getErrcode()) && "ok".equals(response.getErrmsg())) {
+			map.put("result", "success");
+		} else {
+			map.put("result", "error");
+		}
+		return map;
+	}
+
+	@RequestMapping("/addAllServerMenu")
+	public @ResponseBody
+	Object addAllServerMenu() {
+		Map<String, String> map = new HashMap<String, String>();
+		WeChatResponse response = menuService.createMenu();
+		if ("0".equals(response.getErrcode()) && "ok".equals(response.getErrmsg())) {
+			map.put("result", "success");
+		} else {
+			map.put("result", "error");
+		}
+		return map;
 	}
 
 }

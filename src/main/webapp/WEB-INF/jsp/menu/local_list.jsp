@@ -14,7 +14,7 @@
   			<div data-role="main" class="ui-content">
   				<h2>Overwritten server menu?</h2>
   				<a href="#" data-mini="true" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Go Back</a>
-  				<a href="#" data-mini="true" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a ui-icon-check ui-btn-icon-left">Continue</a>
+  				<a href="#" id="page-local-menu-continue-btn" data-mini="true" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a ui-icon-check ui-btn-icon-left">Continue</a>
   			</div>
 		</div>
 	</div>
@@ -46,6 +46,27 @@
 					alert("error");
 				}
 			});
+			$('#page-local-menu-continue-btn').unbind('click', pushLocalMenuToServer);
+			$('#page-local-menu-continue-btn').bind('click', pushLocalMenuToServer);
 		});
+		
+		function pushLocalMenuToServer() {
+			$('#myPopup').popup("close");
+			$.ajax({
+				url : 'addAllServerMenu',
+				type : 'GET',
+				dataType : 'json',
+				success : function(data) {
+					if(data.result == 'success') {
+						alert("Delete Success");
+					} else {
+						alert("Delete Failed");
+					}
+				},
+				error: function(data) {
+					alert('Error');
+				}
+			});
+		}
 	</script>
 </div>

@@ -52,7 +52,27 @@ public class WeChatServiceImpl {
 				// sub menu click
 				String eventKey = requestMessage.getEventKey();
 				if (Const.EventKey.ABOUT_ME.equals(eventKey)) {
-					String content = "姚敏华，男，一个80后程序员！10年入行，从业已四年有余，主要从事银行方面的系统开发。";
+					String content = "姚敏华，男，一个80后程序员！10年入行，从业已四年有余，主要从事银行方面的系统开发.";
+					processResult = genRespTextMessage(content, fromUser, toUser);
+				} else if(Const.EventKey.CONTACT_ME.equals(eventKey)) {
+					StringBuilder sb = new StringBuilder();
+					sb.append("Email:jason.yao525@gmail.com").append("\r\n");
+					sb.append("Blog:http://121.42.11.139/blog").append("\r\n");
+					sb.append("GitHub:https://github.com/jasonsuzhou").append("\r\n");
+					sb.append("Jenkins:http://121.42.11.139/jenkins").append("\r\n");
+					processResult = genRespTextMessage(sb.toString(), fromUser, toUser);
+				} else if(Const.EventKey.SKILL_SETS.equals(eventKey)){
+					String  content = ""; 
+					content += "1. Solid basic of JAVA/Javascript/Shell.\r\n";
+					content += "2. Proficiency in SpringMVC/Spring/Hibernate/Struts2/WebService/Junit/Mockito/JMS etc.\r\n";
+					content += "3. Proficiency in JQuery/JQuery Mobile/ExtJS.\r\n";
+					content += "4. Proficiency in MySQL/Oracle.\r\n";
+					content += "5. Excellent in IBM WebShphere Application Server/Tomcat/IBM WebSphere MQ etc.\r\n";
+					content += "6. Excellent in Eclipse/MyEclipse/Rational Application Developer/iTerm.\r\n";
+					content += "7. Excellent in Git/Jenkins/SVN/CVS.\r\n";
+					content += "8. Excellent in Ubuntu/Mac OSX/AIX.\r\n";
+					content += "9. Pass CET-6 Fluent in read/spoken/written.\r\n";
+					content += "10 Have fan with WeChat Development";
 					processResult = genRespTextMessage(content, fromUser, toUser);
 				} else if (Const.EventKey.SINGLE_IMAGE_ARTICLE_DEMO.equals(eventKey)) {
 					processResult = this.genRespSingleNewsMessage(fromUser, toUser);

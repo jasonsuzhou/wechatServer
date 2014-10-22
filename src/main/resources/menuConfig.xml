@@ -36,11 +36,21 @@
 		</sub_button>
 	</button>
 	<button>
-		<name>帮助</name>
+		<name>关于</name>
 		<sub_button>
 			<button>
 				<key>21</key>
 				<name>关于我</name>
+				<type>click</type>
+			</button>
+			<button>
+				<key>22</key>
+				<name>联系我</name>
+				<type>click</type>
+			</button>
+			<button>
+				<key>23</key>
+				<name>Skills</name>
 				<type>click</type>
 			</button>
 		</sub_button>
