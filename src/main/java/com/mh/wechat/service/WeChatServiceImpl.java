@@ -63,7 +63,7 @@ public class WeChatServiceImpl {
 				} else if(Const.EventKey.SKILL_SETS.equals(eventKey)){
 					String  content = ""; 
 					content += "1. Solid basic of JAVA/Javascript/Shell.\r\n";
-					content += "2. Proficiency in SpringMVC/Spring/Hibernate/Struts2/WebService/Junit/Mockito/JMS etc.\r\n";
+					content += "2. Proficiency in SpringMVC/Spring/Hibernate/Struts2/WebService/Jasper/Junit/Mockito/JMS etc.\r\n";
 					content += "3. Proficiency in JQuery/JQuery Mobile/ExtJS.\r\n";
 					content += "4. Proficiency in MySQL/Oracle.\r\n";
 					content += "5. Excellent in IBM WebShphere Application Server/Tomcat/IBM WebSphere MQ etc.\r\n";
